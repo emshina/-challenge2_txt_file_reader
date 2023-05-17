@@ -1,0 +1,30 @@
+import random
+import time
+
+def quicksort(arr):
+    if len(arr) <= 1:
+        return arr
+    
+    pivot = arr[random.randint(0, len(arr)-1)]
+    smaller = [x for x in arr if x < pivot]
+    equal = [x for x in arr if x == pivot]
+    larger = [x for x in arr if x > pivot]
+    
+    return quicksort(smaller) + equal + quicksort(larger)
+
+# Generate a set of random numbers
+num_of_numbers =  50 # Replace with the desired number of random numbers
+random_numbers = [random.randint(1, 1000) for _ in range(num_of_numbers)]
+
+# Sort the numbers using Quicksort and measure the time taken
+start_time = time.time()
+sorted_numbers = quicksort(random_numbers)
+end_time = time.time()
+
+# Calculate the time taken to sort the numbers
+time_taken = end_time - start_time
+
+# Print the sorted numbers and the time taken
+# print('start stime',start_time)
+print("Sorted numbers:", sorted_numbers)
+print("Time taken to sort:", time_taken, "seconds")
