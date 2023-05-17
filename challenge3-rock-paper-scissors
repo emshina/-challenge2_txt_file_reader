@@ -1,0 +1,49 @@
+import random
+
+#function to determine the winner of the game
+def determine_winner(player_choice, computer_choice):
+    if player_choice == computer_choice:
+        return "It's a tie!"
+
+    if player_choice == "rock":
+        if computer_choice == "paper":
+            return "Computer wins!"
+        else:
+            return "Player wins!"
+
+    if player_choice == "paper":
+        if computer_choice == "scissors":
+            return "Computer wins!"
+        else:
+            return "Player wins!"
+
+    if player_choice == "scissors":
+        if computer_choice == "rock":
+            return "Computer wins!"
+        else:
+            return "Player wins!"
+#a function to take the choice of computer and choice of player
+def play_game():
+    #creating a list to store the valid choices of options
+    valid_choices = ["rock", "paper", "scissors"]
+
+    #prompt user to enter a choice and store it in a variable player_choice
+    player_choice = input("Enter your choice (rock/paper/scissors): ").lower()
+    
+    #see if what user entered is valid
+    while player_choice not in valid_choices:
+        print("Invalid choice. Please try again.")
+        player_choice = input("Enter your choice (rock/paper/scissors): ").lower()
+    
+    #randomly generate computer choice
+    computer_choice = random.choice(valid_choices)
+
+    print(f"Player chooses: {player_choice}")
+    print(f"Computer chooses: {computer_choice}")
+    
+    #creating a variable to store the results
+    result = determine_winner(player_choice, computer_choice)
+    print(result)
+
+#calling the function play game
+play_game()
